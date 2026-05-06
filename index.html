@@ -19,7 +19,7 @@
     </header>
     <div class="container">
         <div class="slideshow">
-            <figure class="slide slide1">
+            <figure class="slide slide1 current">
                 <div class="img_wrap">
                     <div class="img"></div>
                 </div>
@@ -52,6 +52,15 @@
                     </div>
                 </figcaption>
             </figure>
+        </div>
+        <div class="slide_controls">
+            <button id="slideControlsPrev" type="button">prev</button>
+            <button id="slideControlsNext" type="button">next</button>
+        </div>
+        <div class="slide_index">
+            <span id="slideIndexCurrent"></span>
+            /
+            <span id="slideIndexTotal"></span>
         </div>
     </div>
 </div>
