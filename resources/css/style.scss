@@ -4,6 +4,8 @@
 @use "base/reset" as *;
 @use "base/container" as *;
 
+@import url('https://fonts.googleapis.com/css2?family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap');
+
 :root {
     --initial-clip-path: inset(10%);
 }
@@ -106,14 +108,22 @@
             }
         }
 
+        h2 {
+            font-family: "Zalando Sans Expanded", sans-serif;
+            @include fontSize(48, 96);
+            font-weight: 500;
+            letter-spacing: 2px;
+        }
 
         a {
             display: block;
             text-align: right;
-            font-weight: 700;
+            font-family: "Zalando Sans Expanded", sans-serif;
+            font-size: 16px;
+            letter-spacing: 1px;
 
             &:hover {
-                text-decoration: underline;
+                color: $pointColor;
             }
         }
     }
@@ -135,7 +145,7 @@
         color: $pointColor;
 
         &:hover {
-            opacity: 1;
+            opacity: 1 !important;
             text-decoration: underline;
         }
     }
