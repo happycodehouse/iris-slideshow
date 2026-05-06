@@ -4,3 +4,106 @@
 @use "base/reset" as *;
 @use "base/container" as *;
 
+:root {
+    --initial-clip-path: inset(10%);
+}
+
+.slideshow {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-image: url("./../images/slideshow.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.slide, .slide .img_wrap, .slide .img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+
+    &.current {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    @for $i from 1 through 3 {
+        &#{$i} {
+            .img {
+                background-image: url('./../images/img#{$i}.jpg');
+            }
+        }
+    }
+
+    &3 {
+        .img_wrap {
+            .img {
+                background-position: left !important;
+            }
+        }
+    }
+
+    .img_wrap {
+        overflow: hidden;
+        will-change: transform;
+        clip-path: var(--initial-clip-path);
+
+        .img {
+            position: relative;
+            background-size: cover;
+            background-position: right;
+            background-repeat: no-repeat;
+            will-change: transform;
+            backface-visibility: hidden;
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 1;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.25);
+            }
+        }
+    }
+
+    .caption {
+        position: relative;
+        width: 100%;
+        padding: 0 10%;
+        cursor: default;
+
+        .inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 var(--page-padding);
+
+            * {
+                color: white;
+            }
+        }
+
+
+        a {
+            display: block;
+            text-align: right;
+        }
+    }
+}
+
+
