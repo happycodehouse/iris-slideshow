@@ -59,7 +59,7 @@ function initSlideshow(el, {onUpdateCurrent, ctrls} = {}) {
             slide.DOM.link.addEventListener("mouseleave", () => {
                 gsap.killTweensOf(slide.DOM.imgWrap);
                 gsap.to(slide.DOM.imgWrap, {duration: 1, ease: "expo", clipPath: config.clipPath.initial});
-                gsap.to([ctrls.prev, ctrls.next], { duration: 0.3, opacity: 1 });
+                gsap.to([ctrls.prev, ctrls.next], { duration: 0.3, opacity: .5 });
             });
         });
     }
