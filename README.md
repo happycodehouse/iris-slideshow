@@ -1,9 +1,9 @@
 ﻿# 🎬 Vertical Lift Slideshow
 > A cinematic slideshow with vertical lift transitions built with GSAP
 
-<p align="left">
+<!-- <p align="left">
 <img src="./resources/images/preview.png" alt="Preview Image" width="600">
-</p>
+</p> -->
 
 [🔗 Live Demo](https://lift-slideshow.netlify.app/)
 
