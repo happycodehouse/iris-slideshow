@@ -4,10 +4,19 @@
 @use "base/reset" as *;
 @use "base/container" as *;
 
-@import url('https://fonts.googleapis.com/css2?family=Zalando+Sans+Expanded:ital,wght@0,200..900;1,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 :root {
     --initial-clip-path: inset(10%);
+}
+
+@keyframes blinkAni {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
 }
 
 .container {
@@ -109,21 +118,32 @@
         }
 
         h2 {
-            font-family: "Zalando Sans Expanded", sans-serif;
+            font-family: "Lobster Two", sans-serif;
             @include fontSize(48, 96);
-            font-weight: 500;
-            letter-spacing: 2px;
+            font-weight: 400;
         }
 
         a {
             display: block;
+            position: relative;
+            padding-left: to_vw(12);
             text-align: right;
-            font-family: "Zalando Sans Expanded", sans-serif;
-            font-size: 16px;
-            letter-spacing: 1px;
+            line-height: 1;
 
             &:hover {
+                text-decoration: underline;
                 color: $pointColor;
+            }
+
+            &::before {
+                content: '❖';
+                position: absolute;
+                top: 50%;
+                left: 0;
+                transform: translateY(-50%);
+                font-size: 8px;
+                opacity: 0;
+                animation: blinkAni 1s steps(1) infinite;
             }
         }
     }
