@@ -20,3 +20,6 @@
 - **GSAP** (animations)
 - **JavaScript (ES6+)**
 - **SCSS**
+
+## Credits
+- Inspired by [Shape Slideshow with Clip Path](https://tympanus.net/codrops/2021/03/10/shape-slideshow-with-clip-path/) on Codrops.
