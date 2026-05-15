@@ -109,7 +109,7 @@
         .inner {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            gap: to_vw(20);
             padding: 0 var(--page-padding);
 
             * {
@@ -117,33 +117,37 @@
             }
         }
 
+        .line {
+            order: 2;
+            flex: 1;             // 남은 공간 전부 차지
+            height: 1px;
+            background: rgba(255, 255, 255, 0.4);
+        }
+
         h2 {
+            order: 1;
+            flex-shrink: 0;
+            position: relative;
+            white-space: nowrap;
             font-family: "Lobster Two", sans-serif;
             @include fontSize(48, 96);
             font-weight: 400;
         }
 
         a {
-            display: block;
+            order: 3;
+            flex-shrink: 0;
             position: relative;
-            padding-left: to_vw(12);
             text-align: right;
             line-height: 1;
 
             &:hover {
                 text-decoration: underline;
                 color: $pointColor;
-            }
 
-            &::before {
-                content: '❖';
-                position: absolute;
-                top: 50%;
-                left: 0;
-                transform: translateY(-50%);
-                font-size: 8px;
-                opacity: 0;
-                animation: blinkAni 1s steps(1) infinite;
+                & ~.line {
+                    opacity: 0 !important;
+                }
             }
         }
     }

@@ -6,6 +6,7 @@ function createSlide(el) {
             imgWrap: el.querySelector(".img_wrap"),
             img: el.querySelector(".img"),
             text: [...el.querySelectorAll(".caption h2")],
+            line:    el.querySelector(".line"),
             link: el.querySelector(".link"),
         }
     };
@@ -89,10 +90,12 @@ function initSlideshow(el, {onUpdateCurrent, ctrls} = {}) {
             .set(upcomingSlide.DOM.img,     { y: direction === "next" ? "-50%" : "50%" }, "start")
             .set(upcomingSlide.DOM.text,    { y: direction === "next" ? "100%" : "-100%" }, "start")
             .set(upcomingSlide.DOM.link,    { opacity: 0 }, "start")
+            .set(upcomingSlide.DOM.line,    { opacity: 0 }, "start")          // ← 추가
             // current 슬라이드 퇴장
             .to(currentSlide.DOM.imgWrap,   { duration: 0.85, ease: "power3", clipPath: config.clipPath.final, rotation: 0.001 }, "start")
             .to(currentSlide.DOM.text,      { duration: 0.85, ease: "power3", y: direction === "next" ? "-100%" : "100%" }, "start")
             .to(currentSlide.DOM.link,      { duration: 0.4, ease: "power3", opacity: 0 }, "start")
+            .to(currentSlide.DOM.line,      { duration: 0.4, ease: "power3", opacity: 0 }, "start")  // ← 추가
             // 슬라이드 이동
             .to(currentSlide.DOM.imgWrap,   { duration: 0.85, ease: "power2.inOut", y: direction === "next" ? "-100%" : "100%", rotation: 0.001 }, "start+=0.5")
             .to(currentSlide.DOM.img,       { duration: 0.85, ease: "power2.inOut", y: direction === "next" ? "50%" : "-50%" }, "start+=0.5")
@@ -101,7 +104,8 @@ function initSlideshow(el, {onUpdateCurrent, ctrls} = {}) {
             // upcoming 슬라이드 등장
             .to(upcomingSlide.DOM.imgWrap,  { duration: 1.2, ease: "expo.inOut", clipPath: config.clipPath.initial }, "start+=1.0")
             .to(upcomingSlide.DOM.text,     { duration: 1.2, ease: "expo.inOut", y: "0%", rotation: 0.001, stagger: direction === "next" ? 0.1 : -0.1 }, "start+=0.9")
-            .to(upcomingSlide.DOM.link,     { duration: 0.8, ease: "expo.in", opacity: 1 }, "start+=1.2");
+            .to(upcomingSlide.DOM.link,     { duration: 0.8, ease: "expo.in", opacity: 1 }, "start+=1.2")
+            .to(upcomingSlide.DOM.line,     { duration: 0.8, ease: "expo.in", opacity: 1 }, "start+=1.2");
 
         onUpdateCurrent?.(current);
     }
